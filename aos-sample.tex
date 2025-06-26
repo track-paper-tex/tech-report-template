@@ -1,0 +1,123 @@
+\documentclass[report]{imsart}
+
+%% Packages
+\RequirePackage{amsthm,amsmath,amsfonts,amssymb}
+\RequirePackage[numbers,sort&compress]{natbib}
+%\RequirePackage[authoryear]{natbib}%% uncomment this for author-year citations
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+\RequirePackage{graphicx}
+
+\startlocaldefs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Uncomment next line to change            %%
+%% the type of equation numbering           %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\numberwithin{equation}{section}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% For Axiom, Claim, Corollary, Hypothesis, %%
+%% Lemma, Theorem, Proposition              %%
+%% use \theoremstyle{plain}                 %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+\newtheorem{axiom}{Axiom}
+\newtheorem{claim}[axiom]{Claim}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% For Assumption, Definition, Example,     %%
+%% Notation, Property, Remark, Fact         %%
+%% use \theoremstyle{definition}            %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{example}{Example}
+\newtheorem*{fact}{Fact}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Please put your definitions here:        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\mbf}[1]{\mathbf{#1}}
+
+\endlocaldefs
+
+\begin{document}
+
+\begin{frontmatter}
+\title{A simple technical report}
+%\title{A sample article title with some additional note\thanksref{t1}}
+\runtitle{A simple technical report}
+%\thankstext{T1}{A sample additional note to the title.}
+
+\begin{aug}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Only one address is permitted per author. %%
+%% Only division, organization and e-mail is %%
+%% included in the address.                  %%
+%% Additional information can be included in %%
+%% the Acknowledgments section if necessary. %%
+%% ORCID can be inserted by command:         %%
+%% \orcid{0000-0000-0000-0000}               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author[A]{Author\ead[label=e1]{first@somewhere.com}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Addresses                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\address[A]{Department of Statistics, The Chinese University of Hong Kong \printead[presep={ ,\ }]{e1}}
+\end{aug}
+
+
+\end{frontmatter}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Please use \tableofcontents for articles %%
+%% with 50 pages and more                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\tableofcontents
+
+\section{Introduction}
+
+This template helps you to create a properly formatted \LaTeXe\ technical report.
+Prepare your paper in the same style as used in this sample .pdf file.
+Try to avoid excessive use of italics and bold face.
+Please do not use any \LaTeXe\ or \TeX\ commands that affect the layout
+or formatting of your document (i.e., commands like \verb|\textheight|,
+\verb|\textwidth|, etc.).
+
+\section{Notation}
+
+Using notations consistent with the literature is crucial, as it significantly reduces the reading burden for reviewers and peers when evaluating / reading our work.
+
+We primarily follow the notations from \cite{bartlett2006convexity} (I personally think it is one of the best paper on machine learning). Below, I list some common notations that will appear frequently throughout our paper.
+
+\subsection*{Random variables}
+\begin{itemize}
+\item $\mathbb{P}$ is a probability measure, and $\mathbb{E}$ is the corresponding expectation operator.
+\item $\mbf{X} \in \mathbb{R}^d$ is a $d$-dimensional random vector.
+\item $Y \in \mathbb{R}$ is a scalar outcome, and $Y \in \{1, \cdots, K\}$ is a label.
+\item $((\mbf{X}_1, Y_1), \cdots, (\mbf{X}_n, Y_n))$ are i.i.d. random samples from $(\mbf{X}, Y)$.
+\end{itemize}
+
+\subsection*{Functions}
+\begin{itemize}
+\item $((\mbf{x}_1, y_1), \cdots, (\mbf{x}_n, y_n))$ is a set of $n$ observed samples from $(\mbf{X}, Y)$.
+\item $f: \mathbb{R}^d \rightarrow \mathbb{R}$ is a prediction function.
+\end{itemize}
+
+\subsection*{Binary classification} We illustrate the notations with binary classification. For other problems, we can make reasonable adjustments to the current notations, such as extending from univariate to multivariate functions, while keeping the same notations to facilitate understanding.
+\begin{itemize}
+\item $L(\cdot)$ is a loss function for default evaluation.
+\item $R(f) = \mathbb{E}\big(L(Yf(\mbf{X}))\big)$ is the risk function of $f$.
+\item $\phi(\cdot)$ is a surrogate loss function for computing.
+\item $R_\phi(f) = \mathbb{E}\big(\phi(Yf(\mbf{X}))\big)$ is the $\phi$-risk function of $f$.
+\end{itemize}
+
+\bibliographystyle{imsart-number}
+\bibliography{references}
+
+
+\end{document}
