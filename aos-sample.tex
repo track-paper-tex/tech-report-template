@@ -27,6 +27,8 @@
 \newtheorem{claim}[axiom]{Claim}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
 %% For Assumption, Definition, Example,     %%
@@ -43,6 +45,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\mbf}[1]{\mathbf{#1}}
+
+\newcommand{\argmin}{\operatornamewithlimits{arg\,min}}
+\newcommand{\argmax}{\operatornamewithlimits{arg\,max}}
 
 \endlocaldefs
 
@@ -115,6 +120,15 @@ We primarily follow the notations from \cite{bartlett2006convexity} (I personall
 \item $\phi(\cdot)$ is a surrogate loss function for computing.
 \item $R_\phi(f) = \mathbb{E}\big(\phi(Yf(\mbf{X}))\big)$ is the $\phi$-risk function of $f$.
 \end{itemize}
+
+\section{Theory}
+
+The general format of the theorem is [\textsc{conditions} + then + \textsc{conclusion}]. 
+
+\begin{theorem}[\citep{bartlett2006convexity}] Let $\phi$ is convex, then $\phi$ is classification calibrated if and only if $\phi$ is differentiable at 0 and $\phi'(0) < 0$.
+\end{theorem}
+
+If you are quoting a theorem from others, please cite it in the theorem environment.
 
 \bibliographystyle{imsart-number}
 \bibliography{references}
